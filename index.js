@@ -63,6 +63,27 @@ app.post('/canadian-smart-savings/schedule-service', function (req, res) {
 
 })
 
+// LAUREL WEBSITE TRY A FREE SESSION
+
+app.post('/trifit-wellness/try-a-free-session', function (req, res) {
+    console.log(req.body);
+
+    request({
+        uri: "https://workflow-automation.podio.com/catch/98wc361ey8b14yd",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req.body)
+
+    }, function (err, resp, body) {
+
+        if (resp.statusCode != 200) res.sendStatus(400)
+        else res.json({ "status": "success" });
+
+    });
+
+
+})
+
 app.listen(port, () => {
     console.log("I am live again");
 })
